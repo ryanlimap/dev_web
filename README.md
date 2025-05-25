@@ -6,6 +6,10 @@ Este repositório contém o trabalho da disciplina de **Desenvolvimento Web**, r
 
 O projeto foi dividido em etapas, e cada etapa pode ser encontrada em uma **branch** separada. Dessa forma, é possível acompanhar a evolução do desenvolvimento ao longo do tempo, bem como identificar claramente cada fase do trabalho.
 
+## 🖥️ Tecnologias utilizada
+
+⚠️ em construção..
+
 ## 🌿 Estrutura de Branches
 
 - `main`: Branch principal contendo o projeto consolidado e finalizado.
