@@ -12,12 +12,24 @@ O projeto foi dividido em etapas, e cada etapa pode ser encontrada em uma **bran
 
 ## 🌿 Estrutura de Branches
 
-- `main`: Branch principal contendo o projeto consolidado e finalizado.
-- `etapa-1`: Estrutura inicial do projeto, incluindo setup básico e organização de pastas.
-- `etapa-2`: Implementação da estrutura HTML e aplicação de estilos com CSS.
-- `etapa-3`: Adição de interatividade com JavaScript.
-- `etapa-4`: Integração com backend/simulando API ou uso de frameworks (se aplicável).
-- `etapa-final`: Versão final com todas as melhorias, testes e refinamentos.
+- `main`: Branch principal contendo informações do projeto.
+- `main-front`: Branch principal contendo o front-end consolidade e finalizado do projeto.
+- `back-front`: Branch principal contendo o back-end consolidade e finalizado do projeto.
+- `main-dev`: Branch de desenvolvimento do front-end.
+- `back-dev`: Branch de desenvolvimento do back-end.
+
+## 👷 Como participar do projeto
+
+Para contribuir com o projeto, basta se assignar a uma tarefa no backlog, e em development da tarefa criar a branch para desenvolver a mesma.
+
+Exemplo:
+
+![image](https://github.com/user-attachments/assets/a19db62d-17aa-4af0-bf7a-30fdb90ca4e8)
+
+Após finalizar o desenvolvimento da feature, commitar na própria branch e realizar o Pull Request para a branch de desenvolvimnento correspondente a tarefa exemplo:
+
+```tarefa de front-end, branch -> front-dev```
+
 
 ## 🚀 Como rodar o projeto
 
