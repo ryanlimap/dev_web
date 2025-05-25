@@ -22,11 +22,13 @@ O projeto foi dividido em etapas, e cada etapa pode ser encontrada em uma **bran
 
 Para contribuir com o projeto, basta se assignar a uma tarefa no backlog, e em development da tarefa criar a branch para desenvolver a mesma.
 
+(Seguir com as colunas do próprio backlog também, exemplo: ```iniciou a tarefa, coluna -> in progress, finalizou a tarefa, coluna -> done```)
+
 Exemplo:
 
 ![image](https://github.com/user-attachments/assets/a19db62d-17aa-4af0-bf7a-30fdb90ca4e8)
 
-Após finalizar o desenvolvimento da feature, commitar na própria branch e realizar o Pull Request para a branch de desenvolvimnento correspondente a tarefa exemplo:
+Após finalizar o desenvolvimento da feature, commitar na própria branch e realizar o Pull Request para a branch de desenvolvimento correspondente a tarefa exemplo:
 
 ```tarefa de front-end, branch -> front-dev```
 
