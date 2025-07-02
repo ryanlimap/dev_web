@@ -1,0 +1,28 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="" style="max-width: 350px; width: 100%;">
+    <div class="text-center mb-4">
+      <img src="assets/images/logo.svg" alt="logo marca tropa do zero" class="img-fluid" style="max-height: 80px;">
+    </div>
+    <h1 class="h4 text-center mb-3">Login</h1>
+    <form (submit)="onSubmit(usuarioInput.value, senhaInput.value); $event.preventDefault()">
+      <div class="mb-3">
+        <input #usuarioInput type="text" class="form-control form-control-lg" placeholder="Usuário" />
+      </div>
+      <div class="mb-3">
+        <input #senhaInput type="password" class="form-control form-control-lg" placeholder="Senha" />
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Entrar</button>
+    </form>
+    @if (notValid) {
+      <small class="text-white-50">* Preencha os campos</small>
+    }
+    <div class="d-flex flex-column align-items-center mt-3">
+      <a href="#" class="text-decoration-none mb-2">
+        <small class="text-white-50">Cadastre-se</small>
+      </a>
+      <a href="#" class="text-decoration-none">
+        <small class="text-white-50">Esqueci minha senha</small>
+      </a>
+    </div>
+  </div>
+</div>

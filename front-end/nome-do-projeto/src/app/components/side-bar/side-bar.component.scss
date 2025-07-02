@@ -1,0 +1,41 @@
+.sidebar {
+  width: 250px;
+  background: linear-gradient(to bottom, #0e1a38, #000000);
+  height: 100vh;
+  position: relative;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  z-index: 1000;
+
+  .nav-link {
+    color: rgba(255, 255, 255, 0.7);
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    transition: background 0.2s ease, color 0.2s ease;
+
+    &:hover,
+    &.active {
+      background-color: #c7dcea;
+      color: #fff;
+      color: #2979ff;
+    }
+  }
+
+  .notification-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #2979ff;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 6px;
+  }
+
+  .user-info {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 0.5rem 0.75rem;
+    border-radius: 10px;
+  }
+}

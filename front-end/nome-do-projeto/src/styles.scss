@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(
+    circle at center,
+    #101b47 0%,       // Azul profundo no centro
+    #060d24 40%,      // Azul marinho mais escuro ao redor
+    #000000 90%       // Preto total nas bordas
+  );
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-container {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(8px);
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(16, 27, 71, 0.6);
+}
