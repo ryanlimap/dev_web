@@ -12,11 +12,9 @@ O projeto foi dividido em etapas, e cada etapa pode ser encontrada em uma **bran
 
 ## 🌿 Estrutura de Branches
 
-- `main`: Branch principal contendo informações do projeto.
-- `main-front`: Branch principal contendo o front-end consolidade e finalizado do projeto.
-- `back-front`: Branch principal contendo o back-end consolidade e finalizado do projeto.
-- `front-dev`: Branch de desenvolvimento do front-end.
-- `back-dev`: Branch de desenvolvimento do back-end.
+- `main`: Branch principal contendo informações do projeto e o projeto consolidado.
+- `develop`: Branch de desenvolvimento do front-end.
+- `develop-back`: Branch de desenvolvimento do back-end.
 
 ## 👷 Como participar do projeto
 
