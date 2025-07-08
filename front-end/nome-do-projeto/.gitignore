@@ -1,36 +1,29 @@
-# Compilação e saída do Angular
-/dist
-/out-tsc
+# Cache do Angular
+.angular/
+.angular/cache/
+.angular/cache/**
 
-# Arquivos de build
-/build
-/tmp
-/.angular
-/.angular-cache
+# Build
+dist/
+out-tsc/
+build/
+tmp/
 
-# Dependências
-/node_modules
+# Node modules
+node_modules/
 
 # Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+*.log
 
 # Ambiente
 .env
 .env.*.local
 
-# IDEs
-.vscode
-.idea
-
-# Sistemas operacionais
+# IDEs e sistema
+.vscode/
+.idea/
 .DS_Store
 Thumbs.db
 
-# Testes e cobertura
-/coverage
-
-# Gerado por CLI Angular
-.sass-cache
-.cache
+# Testes
+coverage/
