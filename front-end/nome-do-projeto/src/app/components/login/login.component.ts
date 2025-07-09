@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
-  notValid: boolean = false;
+  notValid = false;
 
   onSubmit(usuario: string, senha: string) {
     if(usuario === 'paulo' && senha === 'lixo') {
