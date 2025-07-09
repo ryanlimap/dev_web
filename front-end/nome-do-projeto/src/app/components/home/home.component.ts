@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { SideBarComponent } from '../side-bar/side-bar.component';
-import { HeaderComponent } from '../header/header.component';
-import { MusicsCardComponent } from '../musics-card/musics-card.component';
-import { PlayBarComponent } from '../play-bar/play-bar.component';
+import { SideBarComponent } from '../common/side-bar/side-bar.component';
+import { HeaderComponent } from '../common/header/header.component';
+import { MusicsCardComponent } from '../common/musics-card/musics-card.component';
+import { PlayBarComponent } from '../common/play-bar/play-bar.component';
 
 @Component({
   selector: 'app-home',
