@@ -1,0 +1,155 @@
+body {
+        background-color: #111;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+ 
+.player {
+    width: 100vw;
+    min-height: 80px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1e1e1e;
+    color: white;
+    padding: 12px 24px 8px 24px;
+    z-index: 100;
+    box-sizing: border-box;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    min-width: 220px;
+    max-width: 320px;
+    flex: 0 0 auto;
+    margin-left: 250px;
+}
+
+.cover {
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+    margin-right: 14px;
+    object-fit: cover;
+}
+
+.song-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.song-title {
+    font-weight: bold;
+    font-size: 1em;
+    margin-bottom: 2px;
+}
+
+.artist {
+    font-size: 0.92em;
+    color: #ccc;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.center {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+    max-width: 700px;
+}
+
+.progress-container {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 5px;
+    background-color: #D9D9D9;
+    border-radius: 2.5px;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.progress {
+    width: 60%;
+    height: 100%;
+    background-color: #10B981;
+    transition: width 0.2s;
+}
+
+.time {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 0.85em;
+    color: #ccc;
+    margin-top: 2px;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: -20px;
+}
+
+.control-btn {
+    width: 34px;
+    height: 34px;
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 1.2em;
+    transition: background 0.2s;
+}
+
+.control-btn:active,
+.control-btn:focus {
+    background: #222;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 180px;
+    justify-content: flex-end;
+    flex: 0 0 auto;
+}
+
+.volume-bar {
+    width: 90px;
+    height: 4px;
+    background-color: #747474;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.volume-level {
+    width: 60%;
+    height: 100%;
+    background-color: #D9D9D9;
+    transition: width 0.2s;
+}
+
