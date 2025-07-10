@@ -11,7 +11,7 @@
       <div class="mb-3">
         <input #senhaInput type="password" class="form-control form-control-lg" placeholder="Senha" />
       </div>
-      <button type="submit" class="btn btn-primary w-100">Entrar</button>
+      <button type="submit" (click)="login()" class="btn btn-primary w-100">Entrar</button>
     </form>
     @if (notValid) {
       <small class="text-white-50">* Preencha os campos</small>
