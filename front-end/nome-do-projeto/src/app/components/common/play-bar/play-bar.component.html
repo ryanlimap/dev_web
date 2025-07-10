@@ -1,36 +1,65 @@
 <div class="player">
   <div class="left">
-    <img src="/assets/images/musics_cover/star_boy.png" class="cover" alt="Cover">
+    <img src="/assets/images/musics_cover/star_boy.png" class="cover" alt="Cover" />
     <div class="song-info">
       <div class="song-title">Tropa do Ryan</div>
-      <div class="artist">Dj Ryan027 <span style="margin-left:8px; font-size:1.1em; cursor:pointer;"><img src="../../../assets/icons/play-bar-heart.svg" alt=""></span></div>
+      <div class="artist">
+        Dj Ryan027
+        <span style="margin-left: 8px; font-size: 1.1em; cursor: pointer"
+          ><img src="../../../assets/icons/play-bar-heart.svg" alt=""
+        /></span>
+      </div>
     </div>
   </div>
 
   <div class="center">
     <div class="progress-container">
       <label class="slider-time">
-      <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="time">
-    </label>
+        <input
+          type="range"
+          [min]="0"
+          [max]="duration"
+          [value]="progress"
+          (change)="onSeekChange($event)"
+        />
+      </label>
       <div class="time">
-        <span>03:12</span>
-        <span>-02:08</span>
+        <span
+          >{{ progress / 1000 | number: '1.0-0' }} / {{ duration / 1000 | number: '1.0-0' }} s</span
+        >
       </div>
     </div>
     <div class="controls">
-      <button class="control-btn" title="Random"><span aria-hidden="true"><img src="../../../assets/icons/random.svg" alt=""></span></button>
-      <button class="control-btn" title="Previous"><span aria-hidden="true"><img src="../../../assets/icons/previous.svg" alt=""></span></button>
-      <button class="control-btn" title="Play/Pause"><span aria-hidden="true"><img src="../../../assets/icons/pause.svg" alt=""></span></button>
-      <button class="control-btn" title="Next"><span aria-hidden="true"><img src="../../../assets/icons/next.svg" alt=""></span></button>
-      <button class="control-btn" title="Repeat"><span aria-hidden="true"><img src="../../../assets/icons/replay.svg" alt=""></span></button>
+      <button class="control-btn" title="Random">
+        <span aria-hidden="true"><img src="../../../assets/icons/random.svg" alt="" /></span>
+      </button>
+      <button class="control-btn" title="Previous">
+        <span aria-hidden="true"><img src="../../../assets/icons/previous.svg" alt="" /></span>
+      </button>
+      <button class="control-btn" (click)="togglePlayPause()" title="Play/Pause">
+        <span class="material-icons">{{ isPaused ? 'play_arrow' : 'pause' }}</span>
+      </button>
+      <button class="control-btn" (click)="next()" title="Next">
+        <span aria-hidden="true"><img src="../../../assets/icons/next.svg" alt="" /></span>
+      </button>
+      <button class="control-btn" (click)="previous()" title="Repeat">
+        <span aria-hidden="true"><img src="../../../assets/icons/replay.svg" alt="" /></span>
+      </button>
     </div>
   </div>
 
   <div class="right">
-    <span class="volume-icon"><img src="../../../assets/icons/volume-icon-low.svg" alt=""></span>
+    <span class="volume-icon"><img src="../../../assets/icons/volume-icon-low.svg" alt="" /></span>
     <label class="slider-volume">
-      <input type="range" min="0" max="100" value="50" class="slider-range" aria-label="Volume">
+      <input
+        id="volume"
+        type="range"
+        min="0"
+        max="1"
+        step="0.01"
+        (input)="onVolumeChange($event)"
+      />
     </label>
-    <span class="volume-icon"><img src="../../../assets/icons/volume-icon-high.svg" alt=""></span>
+    <span class="volume-icon"><img src="../../../assets/icons/volume-icon-high.svg" alt="" /></span>
   </div>
-  </div>
+</div>
