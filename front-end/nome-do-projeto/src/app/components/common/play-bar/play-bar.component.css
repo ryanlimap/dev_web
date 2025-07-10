@@ -138,18 +138,35 @@ body {
     flex: 0 0 auto;
 }
 
-.volume-bar {
-    width: 90px;
-    height: 4px;
-    background-color: #747474;
-    border-radius: 2px;
-    overflow: hidden;
+.slider-volume {
+    cursor: pointer;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    align-items: center;
+    accent-color: #ffffff; /* Para navegadores modernos */
+    
 }
 
-.volume-level {
-    width: 60%;
-    height: 100%;
-    background-color: #D9D9D9;
-    transition: width 0.2s;
+.slider-time {
+    cursor: pointer;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    align-items: center;
+    accent-color: #10B981; /* Para navegadores modernos */
+    
+}
+.slider-time input[type="range"] {
+    width: 56.5vh;   /* ajuste conforme necessário */
+    height: 10px;    /* opcional */
 }
 
+.slider-volume input[type="range"] {
+    width: 13.5vh;   /* ajuste conforme necessário */
+    height: 6px;    /* opcional, para deixar mais grosso */
+}
