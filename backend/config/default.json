@@ -1,0 +1,4 @@
+{
+    "jwtSecret": "sua_chave_secreta_jwt_muito_forte_e_aleatoria",
+    "jwtExpiration": "1h"
+}
