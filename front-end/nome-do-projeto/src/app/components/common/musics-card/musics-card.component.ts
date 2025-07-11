@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-musics-card',
-  imports: [],
   templateUrl: './musics-card.component.html',
-  styleUrl: './musics-card.component.scss'
+  styleUrls: ['./musics-card.component.scss']
 })
 export class MusicsCardComponent {
-
+  @Input() title: string = '';
+  @Input() artist: string = '';
+  @Input() image: string = '';
+  @Input() preview: string = '';
 }

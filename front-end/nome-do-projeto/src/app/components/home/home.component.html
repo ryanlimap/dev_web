@@ -7,16 +7,14 @@
       <h1>Popular Albums</h1>
       <div class="row">
         <ul>
-          <li class="list-item">
-            <app-musics-card></app-musics-card>
+          <li *ngFor="let musica of musicas" class="list-item">
+            <app-musics-card
+              [title]="musica.name"
+              [artist]="musica.artists[0]?.name"
+              [image]="musica.album?.images[0]?.url"
+              [preview]="musica.preview_url">
+            </app-musics-card>
           </li>
-          <li class="list-item">
-            <app-musics-card></app-musics-card>
-          </li>
-          <li class="list-item">
-            <app-musics-card></app-musics-card>
-          </li>
-          <li><app-play-bar></app-play-bar></li>
         </ul>
         <section class="queue-section">
       <h2>Recentes</h2>
