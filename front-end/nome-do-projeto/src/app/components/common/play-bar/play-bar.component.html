@@ -32,8 +32,8 @@
       <button class="control-btn" title="Previous">
         <span aria-hidden="true"><img src="../../../assets/icons/previous.svg" alt="" /></span>
       </button>
-      <button class="control-btn" title="Play/Pause">
-        <span class="material-icons">{{ 'play_arrow' }}</span>
+      <button (click)="togglePlay()">
+        {{ isPlaying ? '⏸️ Pausar' : '▶️ Tocar' }}
       </button>
       <button class="control-btn" title="Next">
         <span aria-hidden="true"><img src="../../../assets/icons/next.svg" alt="" /></span>

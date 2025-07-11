@@ -15,7 +15,7 @@ export class LoginComponent {
   }
 
   onSubmit(usuario: string, senha: string) {
-    if(usuario === 'paulo' && senha === 'lixo') {
+    if(usuario === 'paulo' && senha === 'dev') {
       window.location.href = '/home';
     }
     if(usuario === '' || senha === '') {

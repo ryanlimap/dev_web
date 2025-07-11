@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,9 +8,11 @@ import { Router } from '@angular/router';
 })
 export class CallbackComponent implements OnInit {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, @Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit() {
+    if (!isPlatformBrowser(this.platformId)) return;
+
     const params = new URLSearchParams(window.location.search);
     const accessToken = params.get('access_token');
     const refreshToken = params.get('refresh_token');
@@ -23,6 +26,7 @@ export class CallbackComponent implements OnInit {
       window.history.replaceState({}, document.title, '/callback');
 
       // Redireciona para a home/dashboard
+      console.log('aqui')
       this.router.navigate(['/home']);
     } else {
       // Trate erro ou redirecione para login
