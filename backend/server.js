@@ -24,7 +24,12 @@ connectDB();
 
 // Middlewares
 app.use(express.json()); // Permite que o Express leia JSON no corpo das requisições
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:4200', 'http://127.0.0.1:4200'],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // Rota de Teste Simples
 app.get('/', (req, res) => {
@@ -33,7 +38,7 @@ app.get('/', (req, res) => {
 
 // Usar as rotas
 app.use('/api/users', userRoutes); // <-- ADICIONE ESTA LINHA: Todas as rotas em userRoutes //    serão prefixadas com '/api/users'
-app.use('/api/songs', songRoutes);    
+app.use('/api/songs', songRoutes);
 app.use('/api/artists', artistRoutes);
 app.use('/api/albums', albumRoutes);
 app.use('/api/genres', genreRoutes);

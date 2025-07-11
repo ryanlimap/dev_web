@@ -201,4 +201,54 @@ router.get('/devices', async (req, res) => {
   }
 });
 
+// @route   GET /api/spotify/search
+// @desc    Buscar músicas no Spotify
+router.get('/search', async (req, res) => {
+  try {
+    const { q, offset = 0, limit = 20 } = req.query;
+    
+    if (!q) {
+      return res.status(400).json({ error: 'Query parameter "q" é obrigatório' });
+    }
+
+    // Busca usando as credenciais do app (Client Credentials)
+    // Primeiro, obter o token de acesso
+    const tokenResponse = await axios.post(SPOTIFY_TOKEN_URL, 
+      querystring.stringify({
+        grant_type: 'client_credentials'
+      }), 
+      {
+        headers: {
+          'Authorization': `Basic ${Buffer.from(`${client_id}:${client_secret}`).toString('base64')}`,
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }
+    );
+
+    const access_token = tokenResponse.data.access_token;
+
+    // Fazer a busca no Spotify
+    const searchResponse = await axios.get('https://api.spotify.com/v1/search', {
+      headers: {
+        'Authorization': `Bearer ${access_token}`
+      },
+      params: {
+        q,
+        type: 'track',
+        market: 'BR',
+        offset,
+        limit
+      }
+    });
+
+    res.json(searchResponse.data);
+  } catch (err) {
+    console.error('Erro na busca do Spotify:', err.response?.data || err.message);
+    res.status(500).json({ 
+      error: 'Erro ao buscar músicas no Spotify', 
+      details: err.response?.data || err.message 
+    });
+  }
+});
+
 module.exports = router;

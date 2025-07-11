@@ -12,6 +12,6 @@
     <div class="info">
       <h4>{{ title }}</h4>
       <p>{{ artist }}</p>
-      <audio *ngIf="preview" [src]="preview" controls></audio>
+      <audio [src]="preview" controls style="display: none;"></audio>
     </div>
   </div>
