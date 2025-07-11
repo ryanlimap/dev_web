@@ -1,4 +1,7 @@
 {
-    "jwtSecret": "sua_chave_secreta_jwt_muito_forte_e_aleatoria",
-    "jwtExpiration": "1h"
+  "jwtSecret": "sua_chave_secreta_jwt_muito_forte_e_aleatoria",
+  "jwtExpiration": "1h",
+  "spotifyClientId": "82476fd362a1489f8e0ecfb512fcdb83",
+  "spotifyClientSecret": "a409ad20674741f398e4ba84589af1c6",
+  "spotifyRedirectUri": "http://127.0.0.1:5000/api/spotify/callback"
 }
