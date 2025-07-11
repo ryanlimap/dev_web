@@ -4,6 +4,8 @@ const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken'); // <-- Importar jsonwebtoken
 const config = require('config');     // <-- Importar config
+const User = require('../models/User'); 
+const Song = require('../models/Song'); 
 
 // @route   POST /api/users/register
 // @desc    Registrar um novo usuário
@@ -92,5 +94,52 @@ router.post('/login', async (req, res) => {
     }
 });
 
+
+// Favoritar músicas
+router.post('/:userId/favoritar/:musicaId', async (req, res) => {
+    try {
+        const { userId, musicaId } = req.params;
+        const user = await User.findById(userId);
+        if (!user) return res.status(404).send('Usuário não encontrado');
+        const song = await Song.findById(musicaId);
+        if (!song) return res.status(404).send('Música não encontrada');
+        if (user.favoritas.includes(musicaId)) {
+            return res.status(400).send('Música já está nos favoritos');
+        }
+        user.favoritas.push(musicaId);
+        await user.save();
+
+        res.status(200).send('Música adicionada aos favoritos');
+    } catch (error) {
+        res.status(500).send('Erro ao adicionar música aos favoritos');
+    }
+});
+
+// Remove a música dos favoritos
+router.delete('/:userId/favoritar/:musicaId', async (req, res) => {
+    try {
+        const { userId, musicaId } = req.params;
+        const user = await User.findById(userId);
+        if (!user) return res.status(404).send('Usuário não encontrado');
+        user.favoritas = user.favoritas.filter(id => id.toString() !== musicaId);
+        await user.save();
+        res.status(200).send('Música removida dos favoritos');
+    } catch (error) {
+        res.status(500).send('Erro ao remover música dos favoritos');
+    }
+});
+
+// Obter músicas favoritas
+router.get('/:userId/favoritos', async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const user = await User.findById(userId).populate('favoritas');
+        if (!user) return res.status(404).send('Usuário não encontrado');
+
+        res.status(200).json(user.favoritas);
+    } catch (error) {
+        res.status(500).send('Erro ao obter músicas favoritas');
+    }
+});
 
 module.exports = router;

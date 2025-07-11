@@ -4,6 +4,8 @@ const Playlist = require('../models/Playlist');
 const Album = require('../models/Album'); // Para buscar a música por ID
 const User = require('../models/User'); // Para verificar o criador
 const auth = require('../middleware/auth');
+const Playlist = require('../models/Playlist');  
+const Song = require('../models/Song'); 
 
 // @route   POST /api/playlists
 // @desc    Criar uma nova playlist
@@ -255,5 +257,28 @@ router.delete('/:playlistId/songs/:songId', auth, async (req, res) => {
         res.status(500).send('Erro no servidor');
     }
 });
+
+// Aleatoriza as musicas
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];  // Troca os elementos
+    }
+    return array;
+}
+
+// Pega as musicas
+router.get('/:playlistId/musicas', async (req, res) => {
+    try {
+        const { playlistId } = req.params;
+        const playlist = await Playlist.findById(playlistId).populate('musicas');
+        if (!playlist) return res.status(404).send('Playlist não encontrada');
+        const shuffledSongs = shuffleArray(playlist.musicas);
+        res.status(200).json(shuffledSongs); 
+    } catch (error) {
+        res.status(500).send('Erro ao obter músicas da playlist');
+    }
+});
+
 
 module.exports = router;
