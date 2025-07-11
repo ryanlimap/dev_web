@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +9,7 @@ export class LoginComponent {
 
   notValid = false;
 
-  constructor(private auth: AuthService) {}
+  constructor() {}
   login() {
     window.location.href = 'http://localhost:5000/api/spotify/login';
   }
