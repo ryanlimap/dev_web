@@ -19,7 +19,7 @@ router.get('/login', (req, res) => {
     // Escopos (permissões) que você deseja solicitar do usuário
     // user-read-private e user-read-email são bons para começar
     // Você pode adicionar mais escopos conforme a necessidade do seu app
-    const scope = 'user-read-private user-read-email playlist-read-private playlist-read-collaborative user-library-read user-top-read user-read-recently-played';
+    const scope = 'user-read-private user-read-email user-read-email user-read-playback-state user-modify-playback-state streaming playlist-read-private playlist-read-collaborative user-library-read user-top-read user-read-recently-played';
 
     const queryParams = querystring.stringify({
         response_type: 'code',
@@ -74,7 +74,7 @@ router.get('/callback', async (req, res) => {
 
         // Exemplo: Redirecionar para o frontend com os tokens (via query params)
         // O frontend então os pega da URL e os armazena (ex: no localStorage)
-        res.redirect(`http://localhost:5173/dashboard?access_token=${access_token}&refresh_token=${refresh_token}&expires_in=${expires_in}`);
+        res.redirect(`http://localhost:4200/callback?access_token=${access_token}&refresh_token=${refresh_token}&expires_in=${expires_in}`);
 
         // Ou se você quiser apenas ver no backend para testes:
         // res.json({
