@@ -1,0 +1,39 @@
+body {
+  background: linear-gradient(to bottom right, #0b0f2b, #010101);
+  font-family: 'Inter', Arial, sans-serif;
+  color: #fff;
+  margin: 0;
+}
+
+.app-wrapper {
+  display: flex;
+  height: 100vh;
+}
+
+app-side-bar {
+  width: 250px;
+  flex-shrink: 0;
+}
+
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom right, #0b0f2b, #010101);
+}
+
+.container {
+  flex: 1;
+  padding-top: 28px;
+}
+
+ul {
+  padding-top: 12px;
+  list-style-type: none;
+}
+
+ul > li {
+  display: inline-block;
+  padding-right: 30px;
+}
+
