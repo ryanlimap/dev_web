@@ -12,7 +12,7 @@ export class LoginComponent {
 
   constructor(private auth: AuthService) {}
   login() {
-    this.auth.login();
+    window.location.href = 'http://localhost:5000/api/spotify/login';
   }
 
   onSubmit(usuario: string, senha: string) {
