@@ -1,16 +1,24 @@
 <div class="app-wrapper">
   <app-side-bar></app-side-bar>
   <div class="main-content">
-    <app-header></app-header>
+    <app-header (searchEvent)="onSearch($event)"></app-header>
 
     <div class="container">
       <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1>🎵 Descobrir Músicas</h1>
+        <div>
+          <h1 *ngIf="!isSearchMode">🎵 Descobrir Músicas</h1>
+          <h1 *ngIf="isSearchMode">🔍 Resultados para "{{ currentSearchTerm }}"</h1>
+          <small *ngIf="isSearchMode" class="text-muted">
+            <button class="btn btn-link btn-sm p-0 text-decoration-none" (click)="onSearch('')">
+              ← Voltar para descobrir músicas
+            </button>
+          </small>
+        </div>
         <button
           class="btn btn-outline-success"
           (click)="refreshMusics()"
           [disabled]="isLoading">
-          🔄 {{ isLoading ? 'Carregando...' : 'Novas Músicas' }}
+          🔄 {{ isLoading ? 'Carregando...' : (isSearchMode ? 'Buscar Novamente' : 'Novas Músicas') }}
         </button>
       </div>
 

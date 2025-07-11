@@ -24,6 +24,8 @@ export class HomeComponent implements OnInit {
   musicas: any[] = [];
   isLoading = true;
   error: string | null = null;
+  currentSearchTerm: string = '';
+  isSearchMode: boolean = false;
 
   // Lista de gêneros e termos para busca aleatória
   private searchTerms = [
@@ -37,6 +39,55 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadRandomMusics();
+  }
+
+  // Método para lidar com eventos de pesquisa do header
+  onSearch(searchTerm: string): void {
+    if (searchTerm.trim()) {
+      this.currentSearchTerm = searchTerm;
+      this.isSearchMode = true;
+      this.searchMusics(searchTerm);
+    } else {
+      this.currentSearchTerm = '';
+      this.isSearchMode = false;
+      this.loadRandomMusics();
+    }
+  }
+
+  // Método para pesquisar músicas específicas
+  searchMusics(query: string): void {
+    this.isLoading = true;
+    this.error = null;
+    
+    const searchUrl = `http://localhost:3000/api/spotify/search?q=${encodeURIComponent(query)}&limit=20`;
+    
+    console.log('🔍 Pesquisando por:', { query, searchUrl });
+    
+    this.http.get<any>(searchUrl).subscribe({
+      next: (data) => {
+        console.log('✅ Resultados da pesquisa:', data);
+        
+        if (data && data.tracks && data.tracks.items) {
+          this.musicas = data.tracks.items;
+          
+          console.log(`🎵 Encontradas ${this.musicas.length} músicas para "${query}"`);
+          
+          if (this.musicas.length === 0) {
+            this.error = `Nenhuma música encontrada para "${query}". Tente outro termo.`;
+          }
+        } else {
+          this.musicas = [];
+          this.error = `Nenhuma música encontrada para "${query}".`;
+        }
+        this.isLoading = false;
+      },
+      error: (error) => {
+        console.error('❌ Erro na pesquisa:', error);
+        this.error = `Erro ao pesquisar por "${query}". Tente novamente.`;
+        this.isLoading = false;
+        this.loadFallbackMusics();
+      }
+    });
   }
 
   loadRandomMusics(): void {
@@ -115,9 +166,13 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  // Método para recarregar músicas aleatórias
+  // Método para recarregar músicas (aleatórias ou pesquisa)
   refreshMusics(): void {
-    this.loadRandomMusics();
+    if (this.isSearchMode && this.currentSearchTerm) {
+      this.searchMusics(this.currentSearchTerm);
+    } else {
+      this.loadRandomMusics();
+    }
   }
 
   // TrackBy function para melhor performance no *ngFor

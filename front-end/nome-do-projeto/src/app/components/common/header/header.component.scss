@@ -1,6 +1,45 @@
 .main-content {
   display: flex;
   position: relative;
+  flex-direction: column;
+}
+
+// Estilos da Barra de Pesquisa
+.search-container {
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(18, 18, 18, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.search-box {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+
+  &:focus-within {
+    border-color: #1db954;
+    box-shadow: 0 0 0 2px rgba(29, 185, 84, 0.2);
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  input {
+    color: #fff !important;
+    
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.6) !important;
+    }
+  }
+
+  i {
+    margin-right: 0.5rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
 }
 
 .chip {
@@ -26,7 +65,7 @@
 }
 
 .chip-bar {
-  padding: 1rem 2rem 0 2rem;
+  padding: 0 2rem 1rem 2rem;
   position: sticky;
   top: 0;
   z-index: 10;
