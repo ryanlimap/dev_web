@@ -74,6 +74,7 @@ router.get('/callback', async (req, res) => {
 
         // Exemplo: Redirecionar para o frontend com os tokens (via query params)
         // O frontend então os pega da URL e os armazena (ex: no localStorage)
+
         res.redirect(`http://localhost:4200/callback?access_token=${access_token}&refresh_token=${refresh_token}&expires_in=${expires_in}`);
 
         // Ou se você quiser apenas ver no backend para testes:
@@ -128,5 +129,76 @@ router.get('/refresh_token', async (req, res) => {
     }
 });
 
+// POST /api/spotify/play
+router.post('/play', async (req, res) => {
+  const { access_token, uris, device_id } = req.body;
+
+  try {
+    // 1. Ativa o device (transfer playback)
+    await axios.put('https://api.spotify.com/v1/me/player', 
+      { device_ids: [device_id], play: false },
+      {
+        headers: {
+          Authorization: `Bearer ${access_token}`
+        }
+      }
+    );
+
+    // 2. Manda tocar a faixa
+    await axios.put(
+      `https://api.spotify.com/v1/me/player/play?device_id=${device_id}`,
+      { uris: uris ? [uris] : undefined },
+      {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+
+    res.status(204).send();
+  } catch (err) {
+    console.error('Erro ao tocar música:', err.response?.data || err.message);
+    res.status(500).json({ error: 'Erro ao tocar música', details: err.response?.data });
+  }
+});
+
+// POST /api/spotify/pause
+router.put('/pause', async (req, res) => {
+  const access_token = req.headers.authorization?.split(' ')[1];
+  const device_id = req.body.device_id;
+
+  if (!access_token) {
+    return res.status(400).json({ error: 'Access token não fornecido' });
+  }
+
+  try {
+    const url = 'https://api.spotify.com/v1/me/player/pause' + (device_id ? `?device_id=${device_id}` : '');
+
+    await axios.put(url, {}, {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    res.status(204).send();
+  } catch (err) {
+    console.error('Erro ao pausar música:', err.response?.data || err.message);
+    res.status(500).json({ error: 'Erro ao pausar música', details: err.response?.data });
+  }
+});
+
+router.get('/devices', async (req, res) => {
+  const access_token = req.headers.authorization?.split(' ')[1];
+  try {
+    const response = await axios.get('https://api.spotify.com/v1/me/player/devices', {
+      headers: { Authorization: `Bearer ${access_token}` }
+    });
+    res.json(response.data);
+  } catch (err) {
+    res.status(500).json({ error: 'Erro ao obter devices', details: err.response?.data });
+  }
+});
 
 module.exports = router;
