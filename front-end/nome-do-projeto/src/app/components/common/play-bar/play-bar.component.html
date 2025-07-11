@@ -17,15 +17,11 @@
       <label class="slider-time">
         <input
           type="range"
-          [min]="0"
-          [max]="duration"
-          [value]="progress"
-          (change)="onSeekChange($event)"
         />
       </label>
       <div class="time">
         <span
-          >{{ progress / 1000 | number: '1.0-0' }} / {{ duration / 1000 | number: '1.0-0' }} s</span
+          >/</span
         >
       </div>
     </div>
@@ -36,13 +32,13 @@
       <button class="control-btn" title="Previous">
         <span aria-hidden="true"><img src="../../../assets/icons/previous.svg" alt="" /></span>
       </button>
-      <button class="control-btn" (click)="togglePlayPause()" title="Play/Pause">
-        <span class="material-icons">{{ isPaused ? 'play_arrow' : 'pause' }}</span>
+      <button class="control-btn" title="Play/Pause">
+        <span class="material-icons">{{ 'play_arrow' }}</span>
       </button>
-      <button class="control-btn" (click)="next()" title="Next">
+      <button class="control-btn" title="Next">
         <span aria-hidden="true"><img src="../../../assets/icons/next.svg" alt="" /></span>
       </button>
-      <button class="control-btn" (click)="previous()" title="Repeat">
+      <button class="control-btn" title="Repeat">
         <span aria-hidden="true"><img src="../../../assets/icons/replay.svg" alt="" /></span>
       </button>
     </div>
@@ -57,7 +53,6 @@
         min="0"
         max="1"
         step="0.01"
-        (input)="onVolumeChange($event)"
       />
     </label>
     <span class="volume-icon"><img src="../../../assets/icons/volume-icon-high.svg" alt="" /></span>
