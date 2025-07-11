@@ -17,9 +17,6 @@ const playlistRoutes = require('./routes/playlistRoutes');
 const spotifyAuthRoutes = require('./routes/spotifyAuthRoutes');
 
 
-
-
-
 const app = express();
 
 // Conectar ao Banco de Dados (deve ser chamado depois do dotenv.config())
