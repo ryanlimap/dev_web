@@ -1,0 +1,61 @@
+<div class="player">
+  <div class="left">
+    <input [(ngModel)]="newTrackUrl" placeholder="URL da música" />
+    <button (click)="addTrack()">Adicionar à playlist</button>
+    <ul>
+      <li *ngFor="let track of playlist; let i = index">
+        <button (click)="playTrack(i)">{{ track }}</button>
+      </li>
+    </ul>
+  </div>
+
+  <div class="center">
+    <div class="progress-container">
+      <label class="slider-time">
+        <input
+          type="range"
+          [min]="0"
+          [max]="duration"
+          [value]="progress"
+          (input)="seek($event)"
+        />
+      </label>
+      <div class="time">
+        <span>{{ progress | number:'1.0-0' }} / {{ duration | number:'1.0-0' }}s</span>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="control-btn" title="Previous" (click)="prevTrack()">
+        <span aria-hidden="true"><img src="../../../assets/icons/previous.svg" alt="" /></span>
+      </button>
+<<<<<<< HEAD
+      <button class="control-btn" title="Play/Pause" (click)="togglePlay()">
+        <span class="material-icons">{{ isPlaying ? 'pause' : 'play_arrow' }}</span>
+=======
+      <button (click)="togglePlay()">
+        {{ isPlaying ? '⏸️ Pausar' : '▶️ Tocar' }}
+>>>>>>> 41e1f81dda49dd5fa91a9766d7ddb9358e314078
+      </button>
+      <button class="control-btn" title="Next" (click)="nextTrack()">
+        <span aria-hidden="true"><img src="../../../assets/icons/next.svg" alt="" /></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="right">
+    <span class="volume-icon"><img src="../../../assets/icons/volume-icon-low.svg" alt="" /></span>
+    <label class="slider-volume">
+      <input
+        id="volume"
+        type="range"
+        min="0"
+        max="1"
+        step="0.01"
+        [value]="volume"
+        (input)="setVolume($event)"
+      />
+    </label>
+    <span class="volume-icon"><img src="../../../assets/icons/volume-icon-high.svg" alt="" /></span>
+    <span>Volume: {{ (volume * 100) | number:'1.0-0' }}%</span>
+  </div>
+</div>
